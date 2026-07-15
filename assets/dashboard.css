@@ -1,0 +1,116 @@
+/* Time Manual – nástěnkový widget + modal */
+
+.tman-manual-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tman-manual-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 13px; 
+    line-height: 1.5;
+}
+
+.tman-manual-list li:last-child {
+    border-bottom: 0;
+}
+
+.tman-manual-link {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tman-manual-link:before {
+    content: "\f331"; /* dashicons-media-document */
+    font-family: dashicons;
+    vertical-align: middle;
+    margin-right: 6px;
+    color: #2271b1;
+}
+
+/* Modal */
+.tman-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+}
+
+.tman-modal.is-open {
+    display: block;
+}
+
+.tman-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.tman-modal__dialog {
+    position: relative;
+    margin: 5vh auto;
+    max-width: 820px;
+    width: calc(100% - 40px);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 28px 32px 32px;
+}
+
+.tman-modal__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+}
+
+.tman-modal__close:hover {
+    color: #000;
+}
+
+.tman-modal__title {
+    margin: 0 0 16px;
+    padding-right: 30px;
+}
+
+.tman-modal__body {
+    font-size: 15px !important;
+    line-height: 1.6;
+}
+
+.tman-modal__body p, .tman-modal__body li, .tman-modal__body a, .tman-modal__body td, .tman-modal__body th  {
+    font-size: 15px !important;
+    line-height: 1.6;
+}
+
+.tman-modal__body img {
+    max-width: 100%;
+    height: auto;
+}
+
+.tman-loading,
+.tman-error {
+    color: #666;
+    font-style: italic;
+}
+
+.tman-error {
+    color: #d63638;
+}
+
+body.tman-modal-open {
+    overflow: hidden;
+}
+
+#tman_dashboard_widget.postbox {
+    background-color: #fffac8 !important;
+}

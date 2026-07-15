@@ -1,0 +1,250 @@
+# Czech translation for the Time Manual plugin.
+# Copyright (C) 2026 Radomír Panna
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Time Manual 1.0.4\n"
+"Report-Msgid-Bugs-To: https://ovanet.cz\n"
+"Last-Translator: Radomír Panna <panna@ovanet.cz>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Domain: time-manual\n"
+
+#. Description of the plugin
+#: time-manual.php
+msgid "Internal manuals (how-tos) for site editors. Articles visible only to allowed roles, available from the admin dashboard. Self-contained plugin, deployable on any WP site."
+msgstr "Interní manuály (návody) pro editory webu. Články viditelné jen oprávněným rolím, dostupné z nástěnky adminu. Autonomní plugin, nasaditelný na libovolný WP web."
+
+#: includes/ajax.php:17
+msgid "You are not allowed to view this manual."
+msgstr "Nemáte oprávnění zobrazit tento manuál."
+
+#: includes/cpt.php:17
+msgctxt "post type general name"
+msgid "Manuals"
+msgstr "Manuály"
+
+#: includes/cpt.php:18
+msgctxt "post type singular name"
+msgid "Manual"
+msgstr "Manuál"
+
+#: includes/cpt.php:19
+msgctxt "admin menu"
+msgid "Manuals"
+msgstr "Manuály"
+
+#: includes/cpt.php:20
+msgctxt "add new on admin bar"
+msgid "Manual"
+msgstr "Manuál"
+
+#: includes/cpt.php:21
+msgid "Add New"
+msgstr "Přidat nový"
+
+#: includes/cpt.php:22
+msgid "Add New Manual"
+msgstr "Přidat nový manuál"
+
+#: includes/cpt.php:23
+msgid "New Manual"
+msgstr "Nový manuál"
+
+#: includes/cpt.php:24
+msgid "Edit Manual"
+msgstr "Upravit manuál"
+
+#: includes/cpt.php:25
+msgid "View Manual"
+msgstr "Zobrazit manuál"
+
+#: includes/cpt.php:26
+msgid "All Manuals"
+msgstr "Všechny manuály"
+
+#: includes/cpt.php:27
+msgid "Search Manuals"
+msgstr "Hledat manuály"
+
+#: includes/cpt.php:28
+msgid "No manuals found."
+msgstr "Žádné manuály nenalezeny"
+
+#: includes/cpt.php:29
+msgid "No manuals found in Trash."
+msgstr "Žádné manuály v koši"
+
+#: includes/dashboard.php:21
+msgid "Internal Manuals"
+msgstr "Interní manuály"
+
+#: includes/dashboard.php:34
+msgid "There are no manuals yet."
+msgstr "Zatím zde nejsou žádné manuály."
+
+#: includes/dashboard.php:53
+msgid "Close"
+msgstr "Zavřít"
+
+#: includes/dashboard.php:86
+msgid "Loading…"
+msgstr "Načítám…"
+
+#: includes/dashboard.php:87
+msgid "The content could not be loaded."
+msgstr "Obsah se nepodařilo načíst."
+
+#: includes/export.php:149
+#: includes/export.php:199
+msgid "Export Manuals"
+msgstr "Export manuálů"
+
+#: includes/export.php:150
+msgid "Export"
+msgstr "Export"
+
+#: includes/export.php:166
+#: includes/export.php:186
+#: includes/export.php:260
+#: includes/import.php:31
+#: includes/settings.php:26
+msgid "Insufficient permissions."
+msgstr "Nedostatečná oprávnění."
+
+#: includes/export.php:200
+msgid "Select the manuals and download them as a ZIP. The package contains the article content, the configured roles and every media file (images and PDFs) referenced from the content — so it can be imported on another site."
+msgstr "Vyber manuály a stáhni je jako ZIP. Balíček obsahuje obsah článků, nastavené role a všechna média (obrázky i PDF) odkazovaná z obsahu – jde tedy naimportovat na jiný web."
+
+#: includes/export.php:203
+msgid "There are no manuals to export yet."
+msgstr "Zatím zde nejsou žádné manuály k exportu."
+
+#: includes/export.php:213
+msgid "Manual"
+msgstr "Manuál"
+
+#: includes/export.php:214
+msgid "Status"
+msgstr "Stav"
+
+#: includes/export.php:226
+#: includes/import.php:162
+msgid "(no title)"
+msgstr "(bez názvu)"
+
+#: includes/export.php:234
+msgid "Export selected (ZIP)"
+msgstr "Exportovat vybrané (ZIP)"
+
+#: includes/export.php:250
+msgid "Export (ZIP)"
+msgstr "Exportovat (ZIP)"
+
+#: includes/export.php:276
+msgid "No manual was selected for export."
+msgstr "Nebyl vybrán žádný manuál k exportu."
+
+#: includes/export.php:277
+msgid "Export cannot run: the PHP ZipArchive extension is missing on the server."
+msgstr "Export nelze provést: na serveru chybí rozšíření PHP ZipArchive."
+
+#: includes/export.php:278
+msgid "Export failed — the ZIP could not be created."
+msgstr "Export se nezdařil – ZIP se nepodařilo vytvořit."
+
+#: includes/import.php:21
+#: includes/import.php:40
+msgid "Import Manuals"
+msgstr "Import manuálů"
+
+#: includes/import.php:22
+#: includes/import.php:51
+msgid "Import"
+msgstr "Import"
+
+#: includes/import.php:41
+msgid "Upload a ZIP created by the manuals export. Media will be downloaded into this site’s library and the links in the content will be rewritten. Role visibility will be set to this site’s defaults."
+msgstr "Nahraj ZIP vytvořený exportem manuálů. Média se stáhnou do knihovny tohoto webu a odkazy v obsahu se přepíší. Viditelnost pro role se nastaví na výchozí hodnoty tohoto webu."
+
+#: includes/import.php:47
+msgid "ZIP file"
+msgstr "Soubor ZIP"
+
+#: includes/import.php:60
+msgid "No file was selected."
+msgstr "Nebyl vybrán žádný soubor."
+
+#: includes/import.php:65
+msgid "Error while uploading the file."
+msgstr "Chyba při nahrávání souboru."
+
+#. translators: %s: error message returned by unzip_file().
+#: includes/import.php:84
+#, php-format
+msgid "The ZIP could not be extracted: %s"
+msgstr "ZIP se nepodařilo rozbalit: %s"
+
+#: includes/import.php:94
+msgid "The manual.json file is missing from the ZIP."
+msgstr "V ZIPu chybí soubor manual.json."
+
+#: includes/import.php:102
+msgid "manual.json is corrupted or empty."
+msgstr "manual.json je poškozený nebo prázdný."
+
+#. translators: %s: number of imported manuals.
+#: includes/import.php:120
+#, php-format
+msgid "%s manual imported."
+msgid_plural "%s manuals imported."
+msgstr[0] "Importován %s manuál."
+msgstr[1] "Importovány %s manuály."
+msgstr[2] "Importováno %s manuálů."
+
+#: includes/metabox.php:36
+msgid "Role visibility"
+msgstr "Viditelnost pro role"
+
+#: includes/metabox.php:58
+msgid "No role is allowed to read manuals yet. Set them up in Manuals → Settings."
+msgstr "Zatím žádné role nemají oprávnění ke čtení manuálů. Nastav je v Manuály → Nastavení."
+
+#: includes/metabox.php:62
+msgid "Select the roles that will see this manual. Nothing checked = everyone allowed will see it."
+msgstr "Vyber role, které tento manuál uvidí. Nezaškrtnuto = uvidí všichni oprávnění."
+
+#: includes/settings.php:16
+#: includes/settings.php:50
+msgid "Manuals Settings"
+msgstr "Nastavení manuálů"
+
+#: includes/settings.php:17
+msgid "Settings"
+msgstr "Nastavení"
+
+#: includes/settings.php:42
+msgid "Settings saved. Role capabilities have been synchronized."
+msgstr "Nastavení uloženo. Oprávnění rolí byla synchronizována."
+
+#. translators: %s: Administrator role name, wrapped in <strong>.
+#: includes/settings.php:54
+#, php-format
+msgid "Select the roles allowed to read internal manuals. Other roles will not see the manuals on the dashboard at all. %s always has access."
+msgstr "Vyber role, které smí číst interní manuály. Ostatní role manuály na nástěnce vůbec neuvidí. %s má přístup vždy."
+
+#: includes/settings.php:63
+msgid "Roles with access"
+msgstr "Role s přístupem"
+
+#: includes/settings.php:80
+msgid "Do not try to handle a site with thousands of cloned roles here — the capability can be assigned in bulk with a one-off script."
+msgstr "Web s tisíci klony rolí zde neřeš — capability lze hromadně přiřadit jednorázovým skriptem."
+
+#: includes/settings.php:85
+msgid "Save Settings"
+msgstr "Uložit nastavení"

@@ -1,0 +1,249 @@
+# German translation for the Time Manual plugin.
+# Copyright (C) 2026 Radomír Panna
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Time Manual 1.0.4\n"
+"Report-Msgid-Bugs-To: https://ovanet.cz\n"
+"Last-Translator: Radomír Panna <panna@ovanet.cz>\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: time-manual\n"
+
+#. Description of the plugin
+#: time-manual.php
+msgid "Internal manuals (how-tos) for site editors. Articles visible only to allowed roles, available from the admin dashboard. Self-contained plugin, deployable on any WP site."
+msgstr "Interne Handbücher (Anleitungen) für Website-Redakteure. Beiträge nur für berechtigte Rollen sichtbar, erreichbar über das Admin-Dashboard. Eigenständiges Plugin, auf jeder WP-Website einsetzbar."
+
+#: includes/ajax.php:17
+msgid "You are not allowed to view this manual."
+msgstr "Sie sind nicht berechtigt, dieses Handbuch anzuzeigen."
+
+#: includes/cpt.php:17
+msgctxt "post type general name"
+msgid "Manuals"
+msgstr "Handbücher"
+
+#: includes/cpt.php:18
+msgctxt "post type singular name"
+msgid "Manual"
+msgstr "Handbuch"
+
+#: includes/cpt.php:19
+msgctxt "admin menu"
+msgid "Manuals"
+msgstr "Handbücher"
+
+#: includes/cpt.php:20
+msgctxt "add new on admin bar"
+msgid "Manual"
+msgstr "Handbuch"
+
+#: includes/cpt.php:21
+msgid "Add New"
+msgstr "Erstellen"
+
+#: includes/cpt.php:22
+msgid "Add New Manual"
+msgstr "Neues Handbuch erstellen"
+
+#: includes/cpt.php:23
+msgid "New Manual"
+msgstr "Neues Handbuch"
+
+#: includes/cpt.php:24
+msgid "Edit Manual"
+msgstr "Handbuch bearbeiten"
+
+#: includes/cpt.php:25
+msgid "View Manual"
+msgstr "Handbuch ansehen"
+
+#: includes/cpt.php:26
+msgid "All Manuals"
+msgstr "Alle Handbücher"
+
+#: includes/cpt.php:27
+msgid "Search Manuals"
+msgstr "Handbücher durchsuchen"
+
+#: includes/cpt.php:28
+msgid "No manuals found."
+msgstr "Keine Handbücher gefunden."
+
+#: includes/cpt.php:29
+msgid "No manuals found in Trash."
+msgstr "Keine Handbücher im Papierkorb gefunden."
+
+#: includes/dashboard.php:21
+msgid "Internal Manuals"
+msgstr "Interne Handbücher"
+
+#: includes/dashboard.php:34
+msgid "There are no manuals yet."
+msgstr "Es sind noch keine Handbücher vorhanden."
+
+#: includes/dashboard.php:53
+msgid "Close"
+msgstr "Schließen"
+
+#: includes/dashboard.php:86
+msgid "Loading…"
+msgstr "Wird geladen …"
+
+#: includes/dashboard.php:87
+msgid "The content could not be loaded."
+msgstr "Der Inhalt konnte nicht geladen werden."
+
+#: includes/export.php:149
+#: includes/export.php:199
+msgid "Export Manuals"
+msgstr "Handbücher exportieren"
+
+#: includes/export.php:150
+msgid "Export"
+msgstr "Export"
+
+#: includes/export.php:166
+#: includes/export.php:186
+#: includes/export.php:260
+#: includes/import.php:31
+#: includes/settings.php:26
+msgid "Insufficient permissions."
+msgstr "Unzureichende Berechtigungen."
+
+#: includes/export.php:200
+msgid "Select the manuals and download them as a ZIP. The package contains the article content, the configured roles and every media file (images and PDFs) referenced from the content — so it can be imported on another site."
+msgstr "Wählen Sie die Handbücher aus und laden Sie sie als ZIP herunter. Das Paket enthält den Beitragsinhalt, die konfigurierten Rollen und alle im Inhalt referenzierten Mediendateien (Bilder und PDFs) – es kann also auf einer anderen Website importiert werden."
+
+#: includes/export.php:203
+msgid "There are no manuals to export yet."
+msgstr "Es sind noch keine Handbücher zum Exportieren vorhanden."
+
+#: includes/export.php:213
+msgid "Manual"
+msgstr "Handbuch"
+
+#: includes/export.php:214
+msgid "Status"
+msgstr "Status"
+
+#: includes/export.php:226
+#: includes/import.php:162
+msgid "(no title)"
+msgstr "(ohne Titel)"
+
+#: includes/export.php:234
+msgid "Export selected (ZIP)"
+msgstr "Ausgewählte exportieren (ZIP)"
+
+#: includes/export.php:250
+msgid "Export (ZIP)"
+msgstr "Exportieren (ZIP)"
+
+#: includes/export.php:276
+msgid "No manual was selected for export."
+msgstr "Es wurde kein Handbuch zum Exportieren ausgewählt."
+
+#: includes/export.php:277
+msgid "Export cannot run: the PHP ZipArchive extension is missing on the server."
+msgstr "Export nicht möglich: Die PHP-Erweiterung ZipArchive fehlt auf dem Server."
+
+#: includes/export.php:278
+msgid "Export failed — the ZIP could not be created."
+msgstr "Export fehlgeschlagen – die ZIP-Datei konnte nicht erstellt werden."
+
+#: includes/import.php:21
+#: includes/import.php:40
+msgid "Import Manuals"
+msgstr "Handbücher importieren"
+
+#: includes/import.php:22
+#: includes/import.php:51
+msgid "Import"
+msgstr "Import"
+
+#: includes/import.php:41
+msgid "Upload a ZIP created by the manuals export. Media will be downloaded into this site’s library and the links in the content will be rewritten. Role visibility will be set to this site’s defaults."
+msgstr "Laden Sie eine ZIP-Datei hoch, die vom Handbuch-Export erstellt wurde. Die Medien werden in die Mediathek dieser Website übernommen und die Links im Inhalt werden angepasst. Die Sichtbarkeit für Rollen wird auf die Standardwerte dieser Website gesetzt."
+
+#: includes/import.php:47
+msgid "ZIP file"
+msgstr "ZIP-Datei"
+
+#: includes/import.php:60
+msgid "No file was selected."
+msgstr "Es wurde keine Datei ausgewählt."
+
+#: includes/import.php:65
+msgid "Error while uploading the file."
+msgstr "Fehler beim Hochladen der Datei."
+
+#. translators: %s: error message returned by unzip_file().
+#: includes/import.php:84
+#, php-format
+msgid "The ZIP could not be extracted: %s"
+msgstr "Die ZIP-Datei konnte nicht entpackt werden: %s"
+
+#: includes/import.php:94
+msgid "The manual.json file is missing from the ZIP."
+msgstr "In der ZIP-Datei fehlt die Datei manual.json."
+
+#: includes/import.php:102
+msgid "manual.json is corrupted or empty."
+msgstr "manual.json ist beschädigt oder leer."
+
+#. translators: %s: number of imported manuals.
+#: includes/import.php:120
+#, php-format
+msgid "%s manual imported."
+msgid_plural "%s manuals imported."
+msgstr[0] "%s Handbuch importiert."
+msgstr[1] "%s Handbücher importiert."
+
+#: includes/metabox.php:36
+msgid "Role visibility"
+msgstr "Sichtbarkeit für Rollen"
+
+#: includes/metabox.php:58
+msgid "No role is allowed to read manuals yet. Set them up in Manuals → Settings."
+msgstr "Bisher darf keine Rolle Handbücher lesen. Legen Sie das unter Handbücher → Einstellungen fest."
+
+#: includes/metabox.php:62
+msgid "Select the roles that will see this manual. Nothing checked = everyone allowed will see it."
+msgstr "Wählen Sie die Rollen aus, die dieses Handbuch sehen. Nichts ausgewählt = alle Berechtigten sehen es."
+
+#: includes/settings.php:16
+#: includes/settings.php:50
+msgid "Manuals Settings"
+msgstr "Handbuch-Einstellungen"
+
+#: includes/settings.php:17
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/settings.php:42
+msgid "Settings saved. Role capabilities have been synchronized."
+msgstr "Einstellungen gespeichert. Die Berechtigungen der Rollen wurden synchronisiert."
+
+#. translators: %s: Administrator role name, wrapped in <strong>.
+#: includes/settings.php:54
+#, php-format
+msgid "Select the roles allowed to read internal manuals. Other roles will not see the manuals on the dashboard at all. %s always has access."
+msgstr "Wählen Sie die Rollen aus, die interne Handbücher lesen dürfen. Andere Rollen sehen die Handbücher im Dashboard überhaupt nicht. %s hat immer Zugriff."
+
+#: includes/settings.php:63
+msgid "Roles with access"
+msgstr "Rollen mit Zugriff"
+
+#: includes/settings.php:80
+msgid "Do not try to handle a site with thousands of cloned roles here — the capability can be assigned in bulk with a one-off script."
+msgstr "Eine Website mit Tausenden geklonten Rollen sollte hier nicht verwaltet werden – die Berechtigung lässt sich per einmaligem Skript massenhaft zuweisen."
+
+#: includes/settings.php:85
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
