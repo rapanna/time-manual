@@ -1,0 +1,130 @@
+name: Kontrola a vydání
+
+on:
+  push:
+    branches: [main]
+
+# Potřeba pro vytvoření tagu a Release.
+permissions:
+  contents: write
+
+jobs:
+
+  # ---------------------------------------------------------------------------
+  # Syntaktická kontrola napříč podporovanými verzemi PHP.
+  # Blokující — když neprojde, ZIP se nevydá.
+  # ---------------------------------------------------------------------------
+  lint:
+    name: PHP lint (${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.2', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Nainstalovat PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: php -l nad všemi PHP soubory
+        run: |
+          find . -path ./.git -prune -o -name '*.php' -print0 \
+            | xargs -0 -n1 -P4 php -l
+
+  # ---------------------------------------------------------------------------
+  # Oficiální nástroj WordPress.org (bezpečnost, escapování, konvence).
+  # NEBLOKUJÍCÍ — nálezy jen vypíše do logu, vydání nezastaví.
+  # Až si nálezy pročteš, můžeš continue-on-error níž smazat a bude blokovat.
+  # ---------------------------------------------------------------------------
+  plugin-check:
+    name: WordPress Plugin Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        continue-on-error: true
+        with:
+          # Bez kategorie plugin_repo — ta řeší požadavky na zveřejnění
+          # na WordPress.org (readme.txt apod.), kam tenhle plugin nemíří.
+          categories: 'general,security,performance'
+          exclude-directories: '.github,languages'
+
+  # ---------------------------------------------------------------------------
+  # Vydání: jen když se změnila verze v hlavičce pluginu.
+  # Verze beze změny → nic se nevydá, job tiše skončí.
+  # ---------------------------------------------------------------------------
+  release:
+    name: Vydání
+    needs: [lint, plugin-check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Zjistit verzi z hlavičky pluginu
+        id: version
+        run: |
+          VERSION=$(sed -n 's/^[[:space:]]*\*[[:space:]]*Version:[[:space:]]*\([0-9][0-9.]*\).*/\1/p' time-manual.php | head -1)
+          if [ -z "$VERSION" ]; then
+            echo "::error::V hlavičce time-manual.php se nepodařilo najít 'Version:'."
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Verze v hlavičce: $VERSION"
+
+      - name: Existuje už pro tuhle verzi tag?
+        id: check
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag $TAG už existuje → verze se nezměnila, nevydávám."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Tag $TAG zatím neexistuje → vydávám novou verzi."
+          fi
+
+      - name: Sestavit ZIP
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          # ZIP musí mít nahoře složku time-manual/, jinak ho WP nenainstaluje správně.
+          mkdir -p build/time-manual
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='build' \
+            ./ build/time-manual/
+          cd build && zip -rq ../time-manual.zip time-manual
+          cd .. && unzip -l time-manual.zip
+
+      - name: Vytvořit tag a Release se ZIPem
+        if: steps.check.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          # gh release create založí tag na aktuálním commitu sám.
+          gh release create "$TAG" time-manual.zip \
+            --title "$TAG" \
+            --generate-notes
+          echo "### Vydáno $TAG :tada:" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "ZIP ke stažení:" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`https://github.com/${{ github.repository }}/releases/download/$TAG/time-manual.zip\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verze se nezměnila
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          echo "### Nic se nevydalo" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Verze \`${{ steps.version.outputs.version }}\` už vydaná je. Nové vydání spustíš zvýšením \`Version:\` v hlavičce \`time-manual.php\` (a konstanty \`TMAN_VERSION\`)." >> "$GITHUB_STEP_SUMMARY"
