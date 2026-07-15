@@ -48,7 +48,6 @@ jobs:
 
       - name: Plugin Check
         uses: wordpress/plugin-check-action@v1
-        continue-on-error: true
         with:
           # Bez kategorie plugin_repo — ta řeší požadavky na zveřejnění
           # na WordPress.org (readme.txt apod.), kam tenhle plugin nemíří.
