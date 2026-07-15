@@ -115,10 +115,12 @@ function tman_handle_import() {
 
     printf(
         '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
-        sprintf(
-            /* translators: %s: number of imported manuals. */
-            esc_html(_n('%s manual imported.', '%s manuals imported.', $imported, 'time-manual')),
-            number_format_i18n($imported)
+        esc_html(
+            sprintf(
+                /* translators: %s: number of imported manuals. */
+                _n('%s manual imported.', '%s manuals imported.', $imported, 'time-manual'),
+                number_format_i18n($imported)
+            )
         )
     );
 }

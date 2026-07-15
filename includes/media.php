@@ -97,6 +97,7 @@ add_filter('ajax_query_attachments_args', function ($args) {
 
     $meta_query   = isset($args['meta_query']) ? (array) $args['meta_query'] : array();
     $meta_query[] = tman_media_exclusion_clause();
+    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Vědomé: NOT EXISTS nad indexovaným meta_key je jediný způsob, jak média manuálů odfiltrovat. Alternativy (taxonomie, posts_where) mají stejnou cenu JOINu.
     $args['meta_query'] = $meta_query;
 
     return $args;
@@ -125,17 +126,18 @@ add_action('pre_get_posts', function ($query) {
 /**
  * REST (blokový editor si přílohy tahá přes /wp/v2/media).
  */
-add_filter('rest_attachment_query', function ($args, $request) {
+add_filter('rest_attachment_query', function ($args) {
     if (!tman_should_hide_media()) {
         return $args;
     }
 
     $meta_query   = isset($args['meta_query']) ? (array) $args['meta_query'] : array();
     $meta_query[] = tman_media_exclusion_clause();
+    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Vědomé, viz filtr ajax_query_attachments_args výš.
     $args['meta_query'] = $meta_query;
 
     return $args;
-}, 10, 2);
+}, 10, 1);
 
 /* ---------------------------------------------------------------------------
  * 3) Zákaz manipulace (kdyby se k příloze někdo dostal přímo přes ID)
