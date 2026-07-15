@@ -3,7 +3,7 @@
  * Plugin Name: Time Manual
  * Plugin URI:  https://ovanet.cz
  * Description: Internal manuals (how-tos) for site editors. Articles visible only to allowed roles, available from the admin dashboard. Self-contained plugin, deployable on any WP site.
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      Radomír Panna
  * Author URI:  https://ovanet.cz
  * License:     GPL-2.0+
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit; // Zabránění přímému přístupu
 }
 
-define('TMAN_VERSION', '1.0.4');
+define('TMAN_VERSION', '1.0.5');
 define('TMAN_FILE', __FILE__);
 define('TMAN_PATH', plugin_dir_path(__FILE__));
 define('TMAN_URL', plugin_dir_url(__FILE__));
