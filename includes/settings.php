@@ -45,6 +45,8 @@ function tman_render_settings_page() {
 
     $selected  = tman_get_read_roles();
     $all_roles = wp_roles()->get_names();
+    // administrator se v allow-listu nenabízí (cap dostane vždy)
+    unset($all_roles['administrator']);
     ?>
     <div class="wrap">
         <h1><?php esc_html_e('Manuals Settings', 'time-manual'); ?></h1>
@@ -63,12 +65,13 @@ function tman_render_settings_page() {
                     <th scope="row"><?php esc_html_e('Roles with access', 'time-manual'); ?></th>
                     <td>
                         <fieldset>
-                        <?php foreach ($all_roles as $slug => $name) :
-                            if ($slug === 'administrator') {
-                                continue;
-                            } ?>
+                            <label class="tman-label-all" style="display:block;margin-bottom:8px;font-weight:600">
+                                <input type="checkbox" id="tman-check-all">
+                                <?php esc_html_e('Select all', 'time-manual'); ?>
+                            </label>
+                        <?php foreach ($all_roles as $slug => $name) : ?>
                             <label style="display:block;margin-bottom:4px">
-                                <input type="checkbox" name="tman_read_roles[]"
+                                <input type="checkbox" name="tman_read_roles[]" class="tman-read-role"
                                        value="<?php echo esc_attr($slug); ?>"
                                        <?php checked(in_array($slug, $selected, true)); ?>>
                                 <?php echo esc_html(translate_user_role($name)); ?>
@@ -84,6 +87,28 @@ function tman_render_settings_page() {
             </table>
             <?php submit_button(__('Save Settings', 'time-manual'), 'primary', 'tman_settings_submit'); ?>
         </form>
+        <script>
+        (function () {
+            var all   = document.getElementById('tman-check-all');
+            var roles = Array.prototype.slice.call(document.querySelectorAll('.tman-read-role'));
+            if (!all || !roles.length) {
+                return;
+            }
+
+            // Stav „zaškrtni vše" se odvozuje od rolí – i při prvním vykreslení.
+            function sync() {
+                var checked = roles.filter(function (cb) { return cb.checked; }).length;
+                all.checked       = checked === roles.length;
+                all.indeterminate = checked > 0 && checked < roles.length;
+            }
+
+            all.addEventListener('change', function () {
+                roles.forEach(function (cb) { cb.checked = all.checked; });
+            });
+            roles.forEach(function (cb) { cb.addEventListener('change', sync); });
+            sync();
+        })();
+        </script>
     </div>
     <?php
 }

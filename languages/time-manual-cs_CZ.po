@@ -232,19 +232,24 @@ msgid "Settings saved. Role capabilities have been synchronized."
 msgstr "Nastavení uloženo. Oprávnění rolí byla synchronizována."
 
 #. translators: %s: Administrator role name, wrapped in <strong>.
-#: includes/settings.php:54
+#: includes/settings.php:56
 #, php-format
 msgid "Select the roles allowed to read internal manuals. Other roles will not see the manuals on the dashboard at all. %s always has access."
 msgstr "Vyber role, které smí číst interní manuály. Ostatní role manuály na nástěnce vůbec neuvidí. %s má přístup vždy."
 
-#: includes/settings.php:63
+#: includes/settings.php:65
 msgid "Roles with access"
 msgstr "Role s přístupem"
 
-#: includes/settings.php:80
+#: includes/metabox.php:68
+#: includes/settings.php:70
+msgid "Select all"
+msgstr "Zaškrtnout vše"
+
+#: includes/settings.php:83
 msgid "Do not try to handle a site with thousands of cloned roles here — the capability can be assigned in bulk with a one-off script."
 msgstr "Web s tisíci klony rolí zde neřeš — capability lze hromadně přiřadit jednorázovým skriptem."
 
-#: includes/settings.php:85
+#: includes/settings.php:88
 msgid "Save Settings"
 msgstr "Uložit nastavení"

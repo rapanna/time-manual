@@ -61,15 +61,49 @@ function tman_render_roles_metabox($post) {
 
     echo '<p>' . esc_html__('Select the roles that will see this manual. Nothing checked = everyone allowed will see it.', 'time-manual') . '</p>';
     echo '<ul style="margin:0">';
+    // „Zaškrtnout vše" se nabízí jen když je z čeho vybírat (>1 role).
+    if (count($roles) > 1) {
+        printf(
+            '<li style="margin-bottom:6px"><label style="font-weight:600"><input type="checkbox" id="tman-roles-all"> %s</label></li>',
+            esc_html__('Select all', 'time-manual')
+        );
+    }
     foreach ($roles as $slug => $name) {
         printf(
-            '<li><label><input type="checkbox" name="tman_allowed_roles[]" value="%s" %s> %s</label></li>',
+            '<li><label><input type="checkbox" name="tman_allowed_roles[]" class="tman-role" value="%s" %s> %s</label></li>',
             esc_attr($slug),
             checked(in_array($slug, $selected, true), true, false),
             esc_html($name)
         );
     }
     echo '</ul>';
+
+    if (count($roles) > 1) {
+        ?>
+        <script>
+        (function () {
+            var all   = document.getElementById('tman-roles-all');
+            var roles = Array.prototype.slice.call(document.querySelectorAll('#tman_roles_box .tman-role'));
+            if (!all || !roles.length) {
+                return;
+            }
+
+            // Stav „zaškrtni vše" se odvozuje od rolí – i při prvním vykreslení.
+            function sync() {
+                var checked = roles.filter(function (cb) { return cb.checked; }).length;
+                all.checked       = checked === roles.length;
+                all.indeterminate = checked > 0 && checked < roles.length;
+            }
+
+            all.addEventListener('change', function () {
+                roles.forEach(function (cb) { cb.checked = all.checked; });
+            });
+            roles.forEach(function (cb) { cb.addEventListener('change', sync); });
+            sync();
+        })();
+        </script>
+        <?php
+    }
 }
 
 add_action('save_post_time_manual', function ($post_id) {

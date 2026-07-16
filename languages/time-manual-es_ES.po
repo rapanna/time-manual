@@ -231,19 +231,24 @@ msgid "Settings saved. Role capabilities have been synchronized."
 msgstr "Ajustes guardados. Los permisos de los perfiles se han sincronizado."
 
 #. translators: %s: Administrator role name, wrapped in <strong>.
-#: includes/settings.php:54
+#: includes/settings.php:56
 #, php-format
 msgid "Select the roles allowed to read internal manuals. Other roles will not see the manuals on the dashboard at all. %s always has access."
 msgstr "Selecciona los perfiles que pueden leer los manuales internos. El resto de perfiles no verán los manuales en el escritorio. %s siempre tiene acceso."
 
-#: includes/settings.php:63
+#: includes/settings.php:65
 msgid "Roles with access"
 msgstr "Perfiles con acceso"
 
-#: includes/settings.php:80
+#: includes/metabox.php:68
+#: includes/settings.php:70
+msgid "Select all"
+msgstr "Seleccionar todo"
+
+#: includes/settings.php:83
 msgid "Do not try to handle a site with thousands of cloned roles here — the capability can be assigned in bulk with a one-off script."
 msgstr "No gestiones aquí un sitio con miles de perfiles clonados: la capacidad se puede asignar de forma masiva con un script puntual."
 
-#: includes/settings.php:85
+#: includes/settings.php:88
 msgid "Save Settings"
 msgstr "Guardar ajustes"
